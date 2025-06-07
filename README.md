@@ -41,7 +41,7 @@ To get started with this project, follow the steps below:
 
 2. **Set up backend environment**
 
-   - Navigate to the Node backend directory (`nest-next-product-crud/backend/`).
+   - Navigate to the backend directory (`nest-next-product-crud/backend/`).
    - Install dependencies:
 
      ```
