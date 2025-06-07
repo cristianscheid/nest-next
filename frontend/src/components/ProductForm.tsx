@@ -1,7 +1,8 @@
 "use client";
 
-import { Product } from "@/hooks/useProducts";
 import React from "react";
+import CurrencyInput from "react-currency-input-field";
+import { Product } from "@/hooks/useProducts";
 
 interface ProductFormProps {
   product: Product;
@@ -16,15 +17,27 @@ export default function ProductForm({
   onCreate,
   onUpdate,
 }: ProductFormProps) {
-  const handleChange = (field: keyof Product, value: string | number) => {
+  const handleChange = (
+    field: keyof Product,
+    value: string | number | undefined
+  ) => {
     setProduct({
       ...product,
-      [field]: field === "price" ? Number(value) : value,
+      [field]: field === "price" ? (value ? Number(value) : 0) : value,
     });
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (product.id) {
+      await onUpdate();
+    } else {
+      await onCreate();
+    }
+  };
+
   return (
-    <div className="card bg-base-200 p-6 shadow-lg">
+    <form onSubmit={handleSubmit} className="card bg-base-200 p-6 shadow-lg">
       <h2 className="text-xl font-bold mb-4">
         {product.id ? "Edit Product" : "Create Product"}
       </h2>
@@ -40,6 +53,7 @@ export default function ProductForm({
             onChange={(e) => handleChange("name", e.target.value)}
             className="input input-bordered w-full"
             placeholder="Product name"
+            required
           />
         </div>
 
@@ -61,19 +75,20 @@ export default function ProductForm({
           <label className="label" htmlFor="price">
             <span className="label-text">Price</span>
           </label>
-          <input
+          <CurrencyInput
             id="price"
-            type="number"
-            value={product.price}
-            onChange={(e) => handleChange("price", e.target.value)}
+            value={product.price.toFixed(2)}
+            onValueChange={(value) => handleChange("price", value)}
+            disableGroupSeparators={true}
             className="input input-bordered w-full"
-            placeholder="$0.00"
+            prefix="$ "
+            required
           />
         </div>
 
         <div className="form-control self-end">
           <button
-            onClick={product.id ? onUpdate : onCreate}
+            type="submit"
             className={`btn btn-primary w-full ${
               product.id ? "btn-outline" : ""
             }`}
@@ -82,6 +97,6 @@ export default function ProductForm({
           </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 }

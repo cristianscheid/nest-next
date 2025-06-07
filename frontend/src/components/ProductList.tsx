@@ -29,7 +29,7 @@ export default function ProductList({
                 <div className="font-semibold text-lg">{product.name}</div>
                 <div className="text-sm">{product.description}</div>
               </div>
-              <div className="font-medium">${product.price.toFixed(2)}</div>
+              <div className="font-medium">$ {product.price.toFixed(2)}</div>
               <div className="flex gap-2">
                 <button
                   onClick={() => onEdit(product.id!)}
