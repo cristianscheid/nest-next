@@ -12,7 +12,7 @@ interface ToastProps {
 export default function Toast({
   message,
   type = "success",
-  duration = 3000,
+  duration = 1000,
   onClose,
 }: ToastProps) {
   const [visible, setVisible] = useState(true);
@@ -20,7 +20,7 @@ export default function Toast({
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
-      setTimeout(onClose, 300);
+      setTimeout(onClose, 500);
     }, duration);
 
     return () => clearTimeout(timer);
@@ -32,7 +32,7 @@ export default function Toast({
 
   return (
     <div
-      className={`fixed top-4 right-4 z-50 transition-opacity duration-300 ${
+      className={`fixed top-4 right-4 z-50 transition-opacity duration-500 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
