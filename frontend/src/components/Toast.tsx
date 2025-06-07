@@ -26,13 +26,17 @@ export default function Toast({
     return () => clearTimeout(timer);
   }, [duration, onClose]);
 
+  const alertBaseClass = "alert shadow-lg w-80";
+  const alertTypeClass = type === "success" ? "alert-success" : "alert-error";
+  const alertClass = `${alertBaseClass} ${alertTypeClass}`;
+
   return (
     <div
       className={`fixed top-4 right-4 z-50 transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className={`alert alert-${type} shadow-lg w-80`} role="alert">
+      <div className={alertClass} role="alert">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6 shrink-0 stroke-current"
