@@ -14,9 +14,9 @@ datasource db {
 }
 
 model Product {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   name        String
-  description String
+  description String?
   price       Float
 
   @@map("products")
