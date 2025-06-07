@@ -1,8 +1,11 @@
 "use client";
 
+import { Product } from "@/hooks/useProducts";
+import React from "react";
+
 interface ProductFormProps {
-  product: any;
-  setProduct: React.Dispatch<React.SetStateAction<any>>;
+  product: Product;
+  setProduct: React.Dispatch<React.SetStateAction<Product>>;
   onCreate: () => Promise<void>;
   onUpdate: () => Promise<void>;
 }
@@ -13,6 +16,13 @@ export default function ProductForm({
   onCreate,
   onUpdate,
 }: ProductFormProps) {
+  const handleChange = (field: keyof Product, value: string | number) => {
+    setProduct({
+      ...product,
+      [field]: field === "price" ? Number(value) : value,
+    });
+  };
+
   return (
     <div className="card bg-base-200 p-6 shadow-lg">
       <h2 className="text-xl font-bold mb-4">
@@ -26,8 +36,8 @@ export default function ProductForm({
           <input
             id="name"
             type="text"
-            value={product.name ?? ""}
-            onChange={(e) => setProduct({ ...product, name: e.target.value })}
+            value={product.name}
+            onChange={(e) => handleChange("name", e.target.value)}
             className="input input-bordered w-full"
             placeholder="Product name"
           />
@@ -40,10 +50,8 @@ export default function ProductForm({
           <input
             id="description"
             type="text"
-            value={product.description ?? ""}
-            onChange={(e) =>
-              setProduct({ ...product, description: e.target.value })
-            }
+            value={product.description}
+            onChange={(e) => handleChange("description", e.target.value)}
             className="input input-bordered w-full"
             placeholder="Product description"
           />
@@ -56,10 +64,8 @@ export default function ProductForm({
           <input
             id="price"
             type="number"
-            value={product.price ?? ""}
-            onChange={(e) =>
-              setProduct({ ...product, price: Number(e.target.value) })
-            }
+            value={product.price}
+            onChange={(e) => handleChange("price", e.target.value)}
             className="input input-bordered w-full"
             placeholder="$0.00"
           />

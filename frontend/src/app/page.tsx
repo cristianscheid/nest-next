@@ -1,8 +1,8 @@
 "use client";
 
-import { useProducts } from "../hooks/useProducts";
-import ProductForm from "../components/ProductForm";
-import ProductList from "../components/ProductList";
+import { useProducts } from "@/hooks/useProducts";
+import ProductForm from "@/components/ProductForm";
+import ProductList from "@/components/ProductList";
 import Logo from "@/components/Logo";
 
 export default function Home() {

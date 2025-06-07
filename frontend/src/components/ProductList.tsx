@@ -1,7 +1,9 @@
 "use client";
 
+import { Product } from "@/hooks/useProducts";
+
 interface ProductListProps {
-  products: any[];
+  products: Product[];
   onEdit: (id: number) => Promise<void>;
   onDelete: (id: number) => Promise<void>;
 }
@@ -27,16 +29,16 @@ export default function ProductList({
                 <div className="font-semibold text-lg">{product.name}</div>
                 <div className="text-sm">{product.description}</div>
               </div>
-              <div className="font-medium">${product.price}</div>
+              <div className="font-medium">${product.price.toFixed(2)}</div>
               <div className="flex gap-2">
                 <button
-                  onClick={() => onEdit(product.id)}
+                  onClick={() => onEdit(product.id!)}
                   className="btn btn-success btn-sm"
                 >
                   Edit
                 </button>
                 <button
-                  onClick={() => onDelete(product.id)}
+                  onClick={() => onDelete(product.id!)}
                   className="btn btn-error btn-sm"
                 >
                   Delete
