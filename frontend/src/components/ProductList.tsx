@@ -12,30 +12,40 @@ export default function ProductList({
   onDelete,
 }: ProductListProps) {
   return (
-    <div className="flex flex-col gap-2">
-      {products.map((product) => (
-        <div
-          key={product.id}
-          className="flex items-center gap-2 px-4 py-2 rounded-md"
-        >
-          <div className="flex-1">{product.name}</div>
-          <div>{product.price}</div>
-          <div>
-            <button
-              onClick={() => onEdit(product.id)}
-              className="p-2 rounded-md"
+    <div className="card bg-base-200 p-6 shadow-lg">
+      <h2 className="text-xl font-bold mb-4">Product List</h2>
+      {products.length === 0 ? (
+        <div className="text-center">No products found.</div>
+      ) : (
+        <div className="space-y-4">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-base-100 p-4 rounded-lg shadow"
             >
-              Edit
-            </button>
-            <button
-              onClick={() => onDelete(product.id)}
-              className="p-2 rounded-md"
-            >
-              Delete
-            </button>
-          </div>
+              <div className="flex-1">
+                <div className="font-semibold text-lg">{product.name}</div>
+                <div className="text-sm">{product.description}</div>
+              </div>
+              <div className="font-medium">${product.price}</div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => onEdit(product.id)}
+                  className="btn btn-success btn-sm"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => onDelete(product.id)}
+                  className="btn btn-error btn-sm"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }

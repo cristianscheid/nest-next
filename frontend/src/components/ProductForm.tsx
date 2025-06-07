@@ -14,51 +14,67 @@ export default function ProductForm({
   onUpdate,
 }: ProductFormProps) {
   return (
-    <div className="flex gap-5 items-end">
-      <div className="flex flex-col">
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          value={product.name ?? ""}
-          onChange={(e) => setProduct({ ...product, name: e.target.value })}
-          className="p-2 rounded-md"
-        />
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="description">Description</label>
-        <input
-          id="description"
-          type="text"
-          value={product.description ?? ""}
-          onChange={(e) =>
-            setProduct({ ...product, description: e.target.value })
-          }
-          className="p-2 rounded-md"
-        />
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="price">Price</label>
-        <input
-          id="price"
-          type="number"
-          value={product.price ?? ""}
-          onChange={(e) =>
-            setProduct({ ...product, price: Number(e.target.value) })
-          }
-          className="p-2 rounded-md"
-        />
-      </div>
-      <div>
-        {product.id ? (
-          <button onClick={onUpdate} className="px-4 py-2 rounded-md">
-            Update Product
+    <div className="card bg-base-200 p-6 shadow-lg">
+      <h2 className="text-xl font-bold mb-4">
+        {product.id ? "Edit Product" : "Create Product"}
+      </h2>
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="form-control flex-1">
+          <label className="label" htmlFor="name">
+            <span className="label-text">Name</span>
+          </label>
+          <input
+            id="name"
+            type="text"
+            value={product.name ?? ""}
+            onChange={(e) => setProduct({ ...product, name: e.target.value })}
+            className="input input-bordered w-full"
+            placeholder="Product name"
+          />
+        </div>
+
+        <div className="form-control flex-1">
+          <label className="label" htmlFor="description">
+            <span className="label-text">Description</span>
+          </label>
+          <input
+            id="description"
+            type="text"
+            value={product.description ?? ""}
+            onChange={(e) =>
+              setProduct({ ...product, description: e.target.value })
+            }
+            className="input input-bordered w-full"
+            placeholder="Product description"
+          />
+        </div>
+
+        <div className="form-control w-32">
+          <label className="label" htmlFor="price">
+            <span className="label-text">Price</span>
+          </label>
+          <input
+            id="price"
+            type="number"
+            value={product.price ?? ""}
+            onChange={(e) =>
+              setProduct({ ...product, price: Number(e.target.value) })
+            }
+            className="input input-bordered w-full"
+            placeholder="$0.00"
+          />
+        </div>
+
+        <div className="form-control self-end">
+          <button
+            onClick={product.id ? onUpdate : onCreate}
+            className={`btn btn-primary w-full ${
+              product.id ? "btn-outline" : ""
+            }`}
+          >
+            {product.id ? "Update" : "Create"}
           </button>
-        ) : (
-          <button onClick={onCreate} className="px-4 py-2 rounded-md">
-            Create Product
-          </button>
-        )}
+        </div>
       </div>
     </div>
   );
