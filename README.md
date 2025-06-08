@@ -2,16 +2,15 @@
 
 ## Description
 
-This project is a full stack web application that demonstrates CRUD operations for product management, using Nest.js to build a RESTful API, PostgreSQL for persistent data storage, and Prisma as the ORM. The frontend is built with Next.js and styled with Tailwind CSS, offering a responsive interface and smooth user experience. Designed for learning and experimentation, this project emphasizes clean architecture, type safety, and modern development practices across both backend and frontend.
+This project is a full stack web app that demonstrates CRUD operations for managing products. It uses Nest.js to build a RESTful API, PostgreSQL for data storage, and Prisma as the ORM. The frontend is built with Next.js and Tailwind CSS, providing a modern, responsive UI. Designed for learning, it showcases clean architecture, type safety, and modern development practices.
 
 ### Features
 
-- Full CRUD functionality (Create, Read, Update, Delete) for products
-- Nest.js backend with clean architecture and validation using ValidationPipe and DTOs
-- Next.js frontend with React hooks and Tailwind CSS for a responsive UI
-- PostgreSQL database for robust and scalable data persistence
-- Prisma ORM for type-safe, efficient database queries and migrations
-- Toast notifications for instant user feedback on actions (success and error)
+- Full CRUD operations for products (create, read, update, delete)
+- Nest.js backend with ValidationPipe and DTOs for input validation
+- Next.js frontend using React hooks and Tailwind CSS
+- PostgreSQL database with Prisma for efficient queries and migrations
+- Toast notifications for instant user feedback
 
 ## Built With
 
