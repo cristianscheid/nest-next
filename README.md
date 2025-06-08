@@ -76,7 +76,15 @@ To get started with this project, follow the steps below:
      docker compose up -d
      ```
 
-5. **Start the servers**
+5. **Run Prisma migrations**
+
+   - From backend directory (`nest-next-product-crud/backend/`):
+
+     ```
+     npx prisma migrate dev
+     ```
+
+6. **Start the servers**
 
    - From backend directory (`nest-next-product-crud/backend/`):
 
