@@ -25,7 +25,7 @@ This project is a full stack web app that demonstrates CRUD operations for manag
 
 ## Visuals
 
-<!-- TODO -->
+https://github.com/user-attachments/assets/1dd07e28-10bb-48ec-bdf1-69256bea6222
 
 ## Installation
 
