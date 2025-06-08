@@ -16,8 +16,8 @@ This project is a full stack web app that demonstrates CRUD operations for manag
 
 ![TypeScript][typescript-badge]
 
-![Nest.js][nestjs-badge]
 ![Node.js][nodejs-badge]
+![Nest.js][nestjs-badge]
 ![PostgreSQL][postgresql-badge]
 
 ![Next.js][nextjs-badge]
