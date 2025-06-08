@@ -62,12 +62,6 @@ To get started with this project, follow the steps below:
      npm install
      ```
 
-   - Set up environment variables:
-
-     ```
-     cp .env.example .env
-     ```
-
 4. **Start PostgreSQL docker container**
 
    - From root directory (`nest-next-product-crud/`):
